@@ -60,7 +60,8 @@ class AssetPathNotifier extends StateNotifier<List<AssetPath>?> {
       int count = await assetPathEntity.assetCountAsync;
       if (count != 0) {
         if (assetPathEntity.name.contains('Recent')) {
-          assetPathEntity = assetPathEntity.copyWith(name: '전체보기');
+          assetPathEntity = assetPathEntity.copyWith(
+              name: Picker.pickerConfig.labelRecentFolder);
         }
         final assetPath =
             AssetPath(count: count, assetPathEntity: assetPathEntity);

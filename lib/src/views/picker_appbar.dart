@@ -75,16 +75,19 @@ class PickerAppbar extends ConsumerWidget {
                       textScaler: TextScaler.noScaling,
                     ),
                   if (selectedAssets.isNotEmpty)
-                    const Text(
-                      '  완료',
-                      style: TextStyle(
-                        height: 1,
-                        color: Colors.black,
-                        fontSize: 16,
-                        fontWeight: FontWeight.w700,
-                        letterSpacing: -0.5,
+                    Padding(
+                      padding: const EdgeInsets.only(left: 6.0),
+                      child: Text(
+                        pickerConfig.labelDone,
+                        style: const TextStyle(
+                          height: 1,
+                          color: Colors.black,
+                          fontSize: 16,
+                          fontWeight: FontWeight.w700,
+                          letterSpacing: -0.5,
+                        ),
+                        textScaler: TextScaler.noScaling,
                       ),
-                      textScaler: TextScaler.noScaling,
                     ),
                 ],
               ),
@@ -146,11 +149,12 @@ class _AlbumDropdownState extends ConsumerState<AlbumDropdown> {
 
   @override
   Widget build(BuildContext context) {
+    final pickerConfig = Picker.pickerConfig;
     ref.watch(assetPathProvider);
     final selected = ref.watch(selectedPathProvider);
     return PopScope(
       canPop: false,
-      onPopInvoked: (didPop) {
+      onPopInvokedWithResult: (didPop, result) {
         if (!didPop) {
           disposeOverlay();
           Navigator.of(context).pop(Picker.pickerConfig.selectedAssets);
@@ -171,9 +175,9 @@ class _AlbumDropdownState extends ConsumerState<AlbumDropdown> {
                 // 선택값.
                 Flexible(
                   child: selected == null
-                      ? const Text(
-                          '전체보기',
-                          style: TextStyle(
+                      ? Text(
+                          pickerConfig.labelRecentFolder,
+                          style: const TextStyle(
                             fontSize: 16,
                             fontWeight: FontWeight.w700,
                           ),

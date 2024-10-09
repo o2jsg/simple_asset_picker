@@ -79,16 +79,19 @@ class ViewerAppbar extends ConsumerWidget {
                   .watch(selectedPathProvider.notifier)
                   .update((state) => state = null);
             },
-            child: Text(
-              '  완료',
-              style: TextStyle(
-                height: 1,
-                color: selectedAssets.isNotEmpty
-                    ? Colors.white
-                    : const Color.fromARGB(115, 155, 155, 155),
-                fontSize: 16,
-                fontWeight: FontWeight.w700,
-                letterSpacing: -0.5,
+            child: Padding(
+              padding: const EdgeInsets.only(left: 6.0),
+              child: Text(
+                pickerConfig.labelDone,
+                style: TextStyle(
+                  height: 1,
+                  color: selectedAssets.isNotEmpty
+                      ? Colors.white
+                      : const Color.fromARGB(115, 155, 155, 155),
+                  fontSize: 16,
+                  fontWeight: FontWeight.w700,
+                  letterSpacing: -0.5,
+                ),
               ),
             ),
           ),
