@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:simple_asset_picker/src/views/picker_asset_grid.dart';
+import 'package:simple_asset_picker/src/views/picker.dart';
 
 class TakeMediaDialog extends StatelessWidget {
   const TakeMediaDialog({
@@ -8,6 +9,7 @@ class TakeMediaDialog extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final pickerConfig = Picker.pickerConfig;
     return Column(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
@@ -26,11 +28,11 @@ class TakeMediaDialog extends StatelessWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.stretch,
               children: [
-                const Padding(
-                  padding: EdgeInsets.all(10.0),
+                Padding(
+                  padding: const EdgeInsets.all(10.0),
                   child: Text(
-                    '촬영',
-                    style: TextStyle(
+                    pickerConfig.labelChoiceCameraType,
+                    style: const TextStyle(
                       fontSize: 18,
                       fontWeight: FontWeight.bold,
                     ),
@@ -40,11 +42,11 @@ class TakeMediaDialog extends StatelessWidget {
                   onTap: () async {
                     Navigator.of(context).pop(CameraType.image);
                   },
-                  child: const Padding(
-                    padding: EdgeInsets.all(10.0),
+                  child: Padding(
+                    padding: const EdgeInsets.all(10.0),
                     child: Text(
-                      '사진 촬영',
-                      style: TextStyle(fontSize: 15),
+                      pickerConfig.labelMakePhoto,
+                      style: const TextStyle(fontSize: 15),
                     ),
                   ),
                 ),
@@ -52,11 +54,11 @@ class TakeMediaDialog extends StatelessWidget {
                   onTap: () async {
                     Navigator.of(context).pop(CameraType.video);
                   },
-                  child: const Padding(
-                    padding: EdgeInsets.all(10.0),
+                  child: Padding(
+                    padding: const EdgeInsets.all(10.0),
                     child: Text(
-                      '동영상 촬영',
-                      style: TextStyle(fontSize: 15),
+                      pickerConfig.labelMakeVideo,
+                      style: const TextStyle(fontSize: 15),
                     ),
                   ),
                 ),

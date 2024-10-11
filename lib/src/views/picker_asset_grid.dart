@@ -60,10 +60,10 @@ class _PickerAssetListState extends ConsumerState<PickerAssetGrid> {
 
     // 권한 없음
     if (!hasPermission) {
-      return const Center(
+      return Center(
         child: Padding(
-          padding: EdgeInsets.only(top: 50.0),
-          child: Text('갤러리 접근 권한이 없습니다.'),
+          padding: const EdgeInsets.only(top: 50.0),
+          child: Text(pickerConfig.labelPermissionsError),
         ),
       );
     }
@@ -80,10 +80,10 @@ class _PickerAssetListState extends ConsumerState<PickerAssetGrid> {
 
     // 사진 없음
     if (paths.isEmpty || selectedPath == null) {
-      return const Center(
+      return Center(
         child: Padding(
-          padding: EdgeInsets.only(top: 50.0),
-          child: Text('갤러리에 사진이 없습니다.'),
+          padding: const EdgeInsets.only(top: 50.0),
+          child: Text(pickerConfig.labelEmplyGallery),
         ),
       );
     }
@@ -128,22 +128,22 @@ class _PickerAssetListState extends ConsumerState<PickerAssetGrid> {
                     ScaffoldMessenger.of(context)
                       ..removeCurrentSnackBar()
                       ..showSnackBar(
-                        const SnackBar(
-                          shape: StadiumBorder(),
+                        SnackBar(
+                          shape: const StadiumBorder(),
                           behavior: SnackBarBehavior.floating,
-                          duration: Duration(milliseconds: 1500),
-                          padding: EdgeInsets.symmetric(
+                          duration: const Duration(milliseconds: 1500),
+                          padding: const EdgeInsets.symmetric(
                             vertical: 15,
                             horizontal: 24,
                           ),
-                          margin: EdgeInsets.only(
+                          margin: const EdgeInsets.only(
                             left: 15,
                             right: 15,
                             bottom: 15,
                           ),
                           content: Text(
-                            '더 이상 선택할 수 없습니다.',
-                            style: TextStyle(
+                            pickerConfig.labelMaxAssetsReached,
+                            style: const TextStyle(
                               fontWeight: FontWeight.w500,
                             ),
                           ),

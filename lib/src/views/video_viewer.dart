@@ -3,6 +3,7 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:photo_manager/photo_manager.dart';
 import 'package:video_player/video_player.dart';
+import 'package:simple_asset_picker/src/views/picker.dart';
 
 class VideoViewer extends StatefulWidget {
   final AssetEntity asset;
@@ -44,6 +45,7 @@ class _VideoViewerState extends State<VideoViewer> {
 
   @override
   Widget build(BuildContext context) {
+    final pickerConfig = Picker.pickerConfig;
     return Center(
       child: videoPlayerController != null &&
               videoPlayerController!.value.isInitialized
@@ -77,12 +79,12 @@ class _VideoViewerState extends State<VideoViewer> {
                 ],
               ),
             )
-          : const Column(
+          : Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                CircularProgressIndicator(),
-                SizedBox(height: 20),
-                Text('Loading'),
+                const CircularProgressIndicator(),
+                const SizedBox(height: 20),
+                Text(pickerConfig.labelLoading),
               ],
             ),
     );

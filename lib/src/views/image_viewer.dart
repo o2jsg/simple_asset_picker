@@ -58,12 +58,12 @@ class ImageViewer extends ConsumerWidget {
                           width: MediaQuery.of(context).size.width,
                           fit: BoxFit.contain,
                           errorBuilder: (context, error, stackTrace) {
-                            return const Material(
+                            return Material(
                               color: Colors.black,
                               child: Center(
                                 child: Text(
-                                  '이미지를 불러오는데 실패했습니다.',
-                                  style: TextStyle(
+                                  pickerConfig.labelParsingError,
+                                  style: const TextStyle(
                                     color: Colors.white,
                                   ),
                                 ),
@@ -89,22 +89,22 @@ class ImageViewer extends ConsumerWidget {
                     ScaffoldMessenger.of(context)
                       ..removeCurrentSnackBar()
                       ..showSnackBar(
-                        const SnackBar(
-                          shape: StadiumBorder(),
+                        SnackBar(
+                          shape: const StadiumBorder(),
                           behavior: SnackBarBehavior.floating,
-                          duration: Duration(milliseconds: 1500),
-                          padding: EdgeInsets.symmetric(
+                          duration: const Duration(milliseconds: 1500),
+                          padding: const EdgeInsets.symmetric(
                             vertical: 15,
                             horizontal: 24,
                           ),
-                          margin: EdgeInsets.only(
+                          margin: const EdgeInsets.only(
                             left: 15,
                             right: 15,
                             bottom: 15,
                           ),
                           content: Text(
-                            '더 이상 선택할 수 없습니다.',
-                            style: TextStyle(
+                            pickerConfig.labelMaxAssetsReached,
+                            style: const TextStyle(
                               fontWeight: FontWeight.w500,
                             ),
                           ),
